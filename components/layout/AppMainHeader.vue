@@ -9,7 +9,7 @@
   >
     <div class="max-w-7xl mx-auto flex justify-between items-center h-16">
       <NuxtLink to="/" class="flex items-center space-x-2 text-2xl font-bold text-gray-800 hover:text-primary transition-colors duration-200">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary" fill="currentColor" viewBox="0 0 24 24">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="currentColor" viewBox="0 0 24 24">
           <path d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.309L18.818 7 12 9.691 5.182 7 12 4.309zM4 9l8 4 8-4v6l-8 4-8-4V9z"/>
         </svg>
         <span class="font-barlow">MonShop</span>
@@ -17,10 +17,10 @@
 
       <nav class="hidden lg:flex items-center space-x-8">
          <NuxtLink to="/categories" class="flex-shrink-0 flex items-center space-x-2 px-3 py-2 hover:bg-gray-700 rounded-md transition-colors duration-200 text-sm md:text-base">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-800" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
                 </svg>
-                <span class="text-gray-800">Catégories</span>
+                <span class="font-bold text-white">Catégories</span>
             </NuxtLink>
         <ul class="flex space-x-8 main-nav">
           <li v-for="category in productsStore.categories.filter(c => !c.parentCategory)" :key="category.id" class="relative group">
@@ -49,8 +49,8 @@
         <SearchBar class="hidden lg:block" />
 
         <div class="relative group">
-          <NuxtLink to="/account" class="flex items-center space-x-1 text-gray-600 hover:text-primary transition-colors duration-200 group-hover:text-primary">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 group-hover:scale-105 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <NuxtLink to="/account" class="flex items-center space-x-1 font-bold text-white hover:text-primary transition-colors duration-200 group-hover:text-primary">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-800 group-hover:scale-105 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
             </svg>
             <span class="hidden md:inline">{{ authStore.isAuthenticated ? (authStore.user ? authStore.user.username : 'Compte') : 'Compte' }}</span>
@@ -58,12 +58,14 @@
 
           <ul class="absolute right-0 mt-2 w-48 bg-white shadow-lg rounded-md overflow-hidden opacity-0 group-hover:opacity-100 group-hover:visible translate-y-2 group-hover:translate-y-0 transition-all duration-300 ease-out invisible z-10">
             <li v-if="!authStore.isAuthenticated">
-              <NuxtLink to="/login" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 hover:text-primary text-sm" @click="closeMobileMenu">
+              <NuxtLink to="/login" class="flex gap-1  px-4 py-2 text-gray-800 hover:bg-gray-100 hover:text-primary text-sm" @click="closeMobileMenu">
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clipboard-paste-icon lucide-clipboard-paste "><path d="M11 14h10"/><path d="M16 4h2a2 2 0 0 1 2 2v1.344"/><path d="m17 18 4-4-4-4"/><path d="M8 4H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 1.793-1.113"/><rect x="8" y="2" width="8" height="4" rx="1"/></svg>
                 Se connecter
               </NuxtLink>
             </li>
             <li v-if="!authStore.isAuthenticated">
-              <NuxtLink to="/register" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 hover:text-primary text-sm" @click="closeMobileMenu">
+              <NuxtLink to="/register" class="flex gap-1 px-4 py-2 text-gray-800 hover:bg-gray-100 hover:text-primary text-sm" @click="closeMobileMenu">
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clipboard-pen-line-icon lucide-clipboard-pen-line"><rect width="8" height="4" x="8" y="2" rx="1"/><path d="M8 4H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-.5"/><path d="M16 4h2a2 2 0 0 1 1.73 1"/><path d="M8 18h1"/><path d="M21.378 12.626a1 1 0 0 0-3.004-3.004l-4.01 4.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"/></svg>
                 Créer un compte
               </NuxtLink>
             </li>
@@ -80,8 +82,8 @@
           </ul>
         </div>
 
-        <NuxtLink to="/cart" class="relative flex items-center space-x-1 text-gray-600 hover:text-primary transition-colors duration-200 group">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 group-hover:scale-105 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <NuxtLink to="/cart" class="relative flex items-center space-x-1 text-white hover:text-primary transition-colors duration-200 group">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6  text-red-800 group-hover:scale-105 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 100-3 1.5 1.5 0 000 3z" />
           </svg>
           <span class="hidden md:inline">Panier</span>
@@ -107,7 +109,7 @@
     <div class="sub-nav-ba text-white py-2">
         <div class="max-w-7xl mx-auto px-6 md:px-8 lg:px-12 flex items-center space-x-6 overflow-x-auto whitespace-nowrap scrollbar-hide">
             <NuxtLink to="/top-ventes" class="flex-shrink-0 flex items-center space-x-2 px-3 py-2 hover:bg-gray-700 rounded-md transition-colors duration-200 text-sm md:text-base">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-800" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-4 2.5-4h1.037z" />
                     <path stroke-linecap="round" stroke-linejoin="round" d="M14 6l-4.5 4.5M14 6l4.5 4.5M14 6c1.5-1.5 3-3 4.5-3" />
                 </svg>
@@ -115,28 +117,28 @@
             </NuxtLink>
 
             <NuxtLink to="/nouveautes" class="flex-shrink-0 flex items-center space-x-2 px-3 py-2 hover:bg-gray-700 rounded-md transition-colors duration-200 text-sm md:text-base">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-800 " fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
                 <span>Nouveautés</span>
             </NuxtLink>
 
             <NuxtLink to="/promotions" class="flex-shrink-0 flex items-center space-x-2 px-3 py-2 hover:bg-gray-700 rounded-md transition-colors duration-300 text-sm md:text-base">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-800" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
                 </svg>
                 <span>Promotions</span>
             </NuxtLink>
 
             <NuxtLink to="/toutes-categories" class="flex-shrink-0 flex items-center space-x-2 px-3 py-2 hover:bg-gray-700 rounded-md transition-colors duration-200 text-sm md:text-base">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-800" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
                 </svg>
                 <span>Toutes Catégories</span>
             </NuxtLink>
 
             <NuxtLink to="/support-client" class="flex-shrink-0 flex items-center space-x-2 px-3 py-2 hover:bg-gray-700 rounded-md transition-colors duration-200 text-sm md:text-base">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-800 " fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9.228a4.5 4.5 0 117.5 0M15 13H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
                 <span>Support Client</span>
