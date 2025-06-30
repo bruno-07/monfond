@@ -120,14 +120,10 @@ const handleRegister = async () => {
   const result = await authStore.registerUser(email.value, name.value, password.value);
 
   if (result && result.success) {
-    if (result.needsConfirmation) {
-      // Redirige vers la page de vérification avec l'email de l'utilisateur
-      router.push({ path: '/verify-account', query: { email: email.value } });
-    } else {
-      // Si pour une raison quelconque Strapi auto-confirme toujours ou ne nécessite pas de confirmation
-      router.push('/account');
-    }
+    // Redirige vers la page d'information "vérifiez votre e-mail"
+    router.push('/check-your-email');
   }
+  // Les erreurs sont gérées et affichées par authStore.error
 };
 
 const togglePasswordVisibility = () => {
@@ -147,8 +143,9 @@ onMounted(() => {
 </script>
 
 <style scoped>
+/* Assurez-vous que ces couleurs sont définies dans votre tailwind.config.js */
 .text-primary-500 {
-  color: #007bff;
+  color: #007bff; /* Exemple de couleur primaire bleue */
 }
 .hover\:text-primary-900:hover {
   color: #0056b3;
