@@ -3,7 +3,6 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: [
     '@pinia/nuxt', // <--- Assurez-vous que cette ligne est présente
-    '@pinia-plugin-persistedstate/nuxt',
     '@nuxtjs/tailwindcss',
     // '@nuxtjs/color-mode', // Si vous l'avez ajouté
     // ... autres modules que vous pourriez avoir
