@@ -12,7 +12,6 @@ export const useAuthStore = defineStore('auth', () => {
   const loading = ref(false);
   const error = ref(null);
 
-  // Initialisation de l'état d'authentification
   if (token.value) {
     isAuthenticated.value = true;
   }
@@ -52,22 +51,18 @@ export const useAuthStore = defineStore('auth', () => {
     }
   };
 
-  // Enregistrement de l'utilisateur
   const registerUser = async (email, username, password) => {
     const response = await apiCall('auth/local/register', 'POST', {
       email,
       username,
       password,
     });
-    // Si l'enregistrement réussit, Strapi devrait maintenant gérer l'envoi de l'email de confirmation.
-    // Nous ne logguons pas l'utilisateur ici car il doit confirmer son email.
     if (response && response.user) {
       return { success: true, user: response.user };
     }
     return { success: false };
   };
 
-  // Connexion de l'utilisateur
   const login = async (identifier, password) => {
     const response = await apiCall('auth/local', 'POST', {
       identifier,
@@ -82,29 +77,25 @@ export const useAuthStore = defineStore('auth', () => {
     return false;
   };
 
-  // NOUVELLE FONCTION : Gérer le JWT reçu après confirmation d'email
   const handleConfirmationJwt = async (jwt) => {
     if (!jwt) {
       error.value = "Jeton de confirmation manquant ou invalide.";
       return false;
     }
-    token.value = jwt; // Définir le jeton
+    token.value = jwt;
     isAuthenticated.value = true;
 
-    // Tenter de récupérer les informations utilisateur avec le nouveau token
     const fetchedUser = await apiCall('users/me', 'GET');
     if (fetchedUser) {
       user.value = fetchedUser;
       return true;
     } else {
-      // Si la récupération échoue, le token est peut-être invalide ou expiré
       await logout();
       error.value = "Impossible de récupérer les informations utilisateur avec le jeton fourni.";
       return false;
     }
   };
 
-  // Déconnexion de l'utilisateur
   const logout = async () => {
     token.value = null;
     user.value = null;
@@ -114,7 +105,6 @@ export const useAuthStore = defineStore('auth', () => {
     return true;
   };
 
-  // Récupérer les informations de l'utilisateur avec le token actuel
   const fetchUserWithToken = async () => {
     if (token.value && !user.value) {
       const response = await apiCall('users/me', 'GET');
@@ -129,7 +119,6 @@ export const useAuthStore = defineStore('auth', () => {
     }
   };
 
-  // Mettre à jour les informations de l'utilisateur
   const updateUser = async (userId, userData) => {
     const response = await apiCall(`users/${userId}`, 'PUT', userData);
     if (response) {
@@ -139,7 +128,35 @@ export const useAuthStore = defineStore('auth', () => {
     return false;
   };
 
-  // Effacer les erreurs
+  // NOUVEAU : Demande de réinitialisation de mot de passe
+  const forgotPassword = async (email) => {
+    const response = await apiCall('auth/forgot-password', 'POST', { email });
+    if (response && response.ok) { // Strapi renvoie souvent { ok: true } en cas de succès
+      return true; // E-mail de réinitialisation envoyé
+    }
+    // L'erreur est déjà gérée par apiCall
+    return false;
+  };
+
+  // NOUVEAU : Réinitialisation du mot de passe
+  const resetPassword = async (code, password, passwordConfirmation) => {
+    // Strapi attend 'passwordConfirmation' comme nom de champ pour la confirmation
+    const response = await apiCall('auth/reset-password', 'POST', {
+      code,
+      password,
+      passwordConfirmation,
+    });
+    if (response && response.jwt) {
+      // Si la réinitialisation réussit et qu'un JWT est renvoyé, connectez l'utilisateur
+      token.value = response.jwt;
+      user.value = response.user;
+      isAuthenticated.value = true;
+      return true;
+    }
+    // L'erreur est déjà gérée par apiCall
+    return false;
+  };
+
   const clearError = () => {
     error.value = null;
   };
@@ -155,7 +172,9 @@ export const useAuthStore = defineStore('auth', () => {
     logout,
     fetchUserWithToken,
     updateUser,
-    handleConfirmationJwt, // Exporter la nouvelle fonction
+    handleConfirmationJwt,
+    forgotPassword, // Exporter
+    resetPassword,  // Exporter
     clearError
   };
 });
