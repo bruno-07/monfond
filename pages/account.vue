@@ -19,8 +19,10 @@
       </div>
     </header>
 
-    <div class="flex flex-1 overflow-hidden">
-      <AccountSidebar class="hidden md:block w-64 bg-white shadow-md p-4 flex-shrink-0" />
+    <div class="flex flex-1 flex-col md:flex-row overflow-hidden">
+      <div class="w-full md:w-64 bg-white shadow-md p-4 flex-shrink-0">
+        <AccountSidebar />
+      </div>
 
       <main class="flex-1 p-6 overflow-y-auto">
         <NuxtPage />
