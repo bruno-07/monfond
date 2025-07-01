@@ -2,23 +2,42 @@
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
 import { useStorage } from '@vueuse/core';
+import { useRouter } from 'vue-router';
 
 export const useAuthStore = defineStore('auth', () => {
-  const API_BASE_URL = 'https://mighty-kindness-3674f7b18e.strapiapp.com'; // Votre URL Strapi
+  const router = useRouter();
+  const API_BASE_URL = 'https://mighty-kindness-3674f7b18e.strapiapp.com';
 
   const user = useStorage('auth-user', null);
   const token = useStorage('auth-token', null);
   const isAuthenticated = ref(false);
   const loading = ref(false);
   const error = ref(null);
+  const successMessage = ref(null);
 
   if (token.value) {
     isAuthenticated.value = true;
   }
 
+  // Fonctions d'aide pour gérer les messages d'état
+  const clearMessages = () => {
+    error.value = null;
+    successMessage.value = null;
+  };
+
+  const setSuccess = (message) => {
+    successMessage.value = message;
+    error.value = null;
+  };
+
+  const setError = (message) => {
+    error.value = message;
+    successMessage.value = null;
+  };
+
   const apiCall = async (endpoint, method, data = null) => {
     loading.value = true;
-    error.value = null;
+    clearMessages(); // <-- S'assure que cela est appelé pour effacer les messages précédents
     try {
       const headers = {
         'Content-Type': 'application/json',
@@ -44,7 +63,7 @@ export const useAuthStore = defineStore('auth', () => {
       }
       return responseData;
     } catch (e) {
-      error.value = e.message || 'Une erreur inattendue est survenue.';
+      setError(e.message || 'Une erreur inattendue est survenue.');
       return null;
     } finally {
       loading.value = false;
@@ -58,6 +77,8 @@ export const useAuthStore = defineStore('auth', () => {
       password,
     });
     if (response && response.user) {
+      setSuccess("Inscription réussie ! Veuillez vérifier votre e-mail pour confirmer votre compte.");
+      router.push('/check-your-email');
       return { success: true, user: response.user };
     }
     return { success: false };
@@ -72,6 +93,8 @@ export const useAuthStore = defineStore('auth', () => {
       token.value = response.jwt;
       user.value = response.user;
       isAuthenticated.value = true;
+      setSuccess("Connexion réussie ! Redirection...");
+      router.push('/');
       return true;
     }
     return false;
@@ -79,29 +102,30 @@ export const useAuthStore = defineStore('auth', () => {
 
   const handleConfirmationJwt = async (jwt) => {
     if (!jwt) {
-      error.value = "Jeton de confirmation manquant ou invalide.";
+      setError("Jeton de confirmation manquant ou invalide.");
       return false;
     }
-    token.value = jwt;
-    isAuthenticated.value = true;
 
-    const fetchedUser = await apiCall('users/me', 'GET');
-    if (fetchedUser) {
-      user.value = fetchedUser;
-      return true;
+    const response = await apiCall(`auth/email-confirmation?confirmation=${jwt}`, 'GET');
+    if (response && response.jwt && response.user) {
+        token.value = response.jwt;
+        user.value = response.user;
+        isAuthenticated.value = true;
+        setSuccess("Votre compte a été vérifié avec succès. Redirection...");
+        router.push('/account');
+        return true;
     } else {
-      await logout();
-      error.value = "Impossible de récupérer les informations utilisateur avec le jeton fourni.";
-      return false;
+        setError(error.value || "Impossible de confirmer le compte. Lien invalide ou expiré.");
+        return false;
     }
   };
 
-  const logout = async () => {
+  const logout = () => {
     token.value = null;
     user.value = null;
     isAuthenticated.value = false;
-    localStorage.removeItem('auth-user');
-    localStorage.removeItem('auth-token');
+    clearMessages();
+    router.push('/login');
     return true;
   };
 
@@ -123,42 +147,36 @@ export const useAuthStore = defineStore('auth', () => {
     const response = await apiCall(`users/${userId}`, 'PUT', userData);
     if (response) {
       user.value = response;
+      setSuccess("Profil mis à jour avec succès !");
       return true;
     }
     return false;
   };
 
-  // NOUVEAU : Demande de réinitialisation de mot de passe
   const forgotPassword = async (email) => {
     const response = await apiCall('auth/forgot-password', 'POST', { email });
-    if (response && response.ok) { // Strapi renvoie souvent { ok: true } en cas de succès
-      return true; // E-mail de réinitialisation envoyé
+    if (response) {
+      setSuccess("Si l'adresse e-mail existe, un lien de réinitialisation vous a été envoyé.");
+      return true;
     }
-    // L'erreur est déjà gérée par apiCall
     return false;
   };
 
-  // NOUVEAU : Réinitialisation du mot de passe
   const resetPassword = async (code, password, passwordConfirmation) => {
-    // Strapi attend 'passwordConfirmation' comme nom de champ pour la confirmation
     const response = await apiCall('auth/reset-password', 'POST', {
       code,
       password,
       passwordConfirmation,
     });
     if (response && response.jwt) {
-      // Si la réinitialisation réussit et qu'un JWT est renvoyé, connectez l'utilisateur
       token.value = response.jwt;
       user.value = response.user;
       isAuthenticated.value = true;
+      setSuccess("Votre mot de passe a été réinitialisé avec succès ! Redirection vers la page de connexion...");
+      router.push('/login');
       return true;
     }
-    // L'erreur est déjà gérée par apiCall
     return false;
-  };
-
-  const clearError = () => {
-    error.value = null;
   };
 
   return {
@@ -167,14 +185,18 @@ export const useAuthStore = defineStore('auth', () => {
     isAuthenticated,
     loading,
     error,
+    successMessage,
     registerUser,
     login,
     logout,
     fetchUserWithToken,
     updateUser,
     handleConfirmationJwt,
-    forgotPassword, // Exporter
-    resetPassword,  // Exporter
-    clearError
+    forgotPassword,
+    resetPassword,
+    clearError: clearMessages, // <-- C'est un alias pour la rétrocompatibilité
+    setSuccess,
+    setError, // <-- S'assure que setError est exporté
+    clearMessages // <-- S'assure que clearMessages est exporté directement
   };
 });

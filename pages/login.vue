@@ -62,7 +62,7 @@
           </div>
 
           <div class="text-sm">
-            <NuxtLink to="/reset-password" class="font-medium text-primary-500 hover:text-primary-900">
+            <NuxtLink to="/forgot-password" class="font-medium text-primary-500 hover:text-primary-900">
               Mot de passe oublié ?
             </NuxtLink>
           </div>

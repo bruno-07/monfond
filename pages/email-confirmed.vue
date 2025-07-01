@@ -2,7 +2,7 @@
   <div class="min-h-screen bg-gray-100 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
     <div class="max-w-md w-full space-y-8 bg-white p-8 rounded-lg shadow-lg text-center">
       <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
-        Compte confirmé !
+        Confirmation de compte
       </h2>
       <p v-if="authStore.loading" class="mt-2 text-sm text-gray-600">
         Connexion en cours...
@@ -14,8 +14,11 @@
           Retour à la page de connexion
         </NuxtLink>
       </p>
-      <p v-else class="mt-2 text-sm text-green-600">
-        Votre compte a été vérifié avec succès. Vous allez être redirigé.
+      <p v-else-if="authStore.successMessage" class="mt-2 text-sm text-green-600">
+        {{ authStore.successMessage }}
+      </p>
+      <p v-else class="mt-2 text-sm text-gray-600">
+        Tentative de confirmation du compte...
       </p>
     </div>
   </div>
@@ -23,32 +26,27 @@
 
 <script setup>
 import { onMounted } from 'vue';
-import { useRoute, useRouter } from 'vue-router';
+import { useRoute } from 'vue-router'; // useRouter n'est plus nécessaire ici si la redirection est dans le store
 import { useAuthStore } from '@/stores/auth';
 
 const route = useRoute();
-const router = useRouter();
 const authStore = useAuthStore();
 
 onMounted(async () => {
   const jwt = route.query.jwt; // Récupère le JWT du paramètre d'URL
 
+  authStore.clearMessages(); // Nettoie les messages au montage
+
   if (jwt) {
-    authStore.clearError();
-    const success = await authStore.handleConfirmationJwt(jwt);
-    if (success) {
-      // Rediriger vers le compte si la connexion réussit
-      router.push('/account');
-    } else {
-      // L'erreur est déjà définie dans le store
-      // Rester sur cette page pour afficher l'erreur
-    }
+    // La fonction handleConfirmationJwt du store gère maintenant l'appel API,
+    // la mise à jour de l'état, les messages et la redirection.
+    await authStore.handleConfirmationJwt(jwt);
   } else {
     // Si pas de JWT dans l'URL, c'est une erreur
-    authStore.error = "Lien de confirmation invalide ou manquant.";
+    authStore.setError("Lien de confirmation invalide ou manquant.");
     // Rediriger vers la connexion après un court délai
     setTimeout(() => {
-      router.push('/login');
+      useRouter().push('/login'); // Utilisation de useRouter directement si pas importé avant
     }, 3000);
   }
 });
