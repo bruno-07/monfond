@@ -20,39 +20,46 @@
         <div class="col-span-1 md:col-span-1">
           <h3 class="text-lg  text-gray-900 font-barlow mb-4">Navigation</h3>
           <ul class="space-y-2">
-            <li><NuxtLink to="/" class="text-white hover:text-primary-500 transition-colors duration-300">Accueil</NuxtLink></li>
-            <li><NuxtLink to="/products" class="text-white hover:text-primary-500 transition-colors duration-300">Produits</NuxtLink></li>
-            <li><NuxtLink to="/categories" class="text-white hover:text-primary-500 transition-colors duration-300">Catégories</NuxtLink></li>
-            <li><NuxtLink to="/about" class="text-white hover:text-primary-500 transition-colors duration-300">À Propos</NuxtLink></li>
-            <li><NuxtLink to="/contact" class="text-white hover:text-primary-500 transition-colors duration-300">Contact</NuxtLink></li>
+            <li><NuxtLink to="/" class="text-white hover:text-red-800 transition-colors duration-300">Offres du jour</NuxtLink></li>
+            <li><NuxtLink to="/products" class="text-white hover:text-red-800 transition-colors duration-300">Produits tendance</NuxtLink></li>
+            <li><NuxtLink to="/categories" class="text-white hover:text-red-800 transition-colors duration-300">Catégories</NuxtLink></li>
+            <li><NuxtLink to="/footerpage/about" class="text-white hover:text-red-800 transition-colors duration-300">À Propos</NuxtLink></li>
+            <li><NuxtLink to="/footerpage/contact" class="text-white hover:text-red-800 transition-colors duration-300">Contact</NuxtLink></li>
           </ul>
         </div>
 
         <div class="col-span-1 md:col-span-1">
           <h3 class="text-lg  text-gray-900 font-barlow mb-4">Aide & Support</h3>
           <ul class="space-y-2">
-            <li><NuxtLink to="/faq" class="text-white hover:text-primary-500 transition-colors duration-300">FAQ</NuxtLink></li>
-            <li><NuxtLink to="/shipping" class="text-white hover:text-primary-500 transition-colors duration-300">Livraison</NuxtLink></li>
-            <li><NuxtLink to="/returns" class="text-white hover:text-primary-500 transition-colors duration-300">Retours</NuxtLink></li>
-            <li><NuxtLink to="/privacy-policy" class="text-white hover:text-primary-500 transition-colors duration-300">Politique de Confidentialité</NuxtLink></li>
-            <li><NuxtLink to="/terms-of-service" class="text-white hover:text-primary-500 transition-colors duration-300">Conditions d'Utilisation</NuxtLink></li>
+            <li><NuxtLink to="/footerpage/faq" class="text-white hover:text-red-800 transition-colors duration-300">FAQ</NuxtLink></li>
+            <li><NuxtLink to="/footerpage/shipping" class="text-white hover:text-red-800 transition-colors duration-300">Livraison</NuxtLink></li>
+            <li><NuxtLink to="/footerpage/returns" class="text-white hover:text-red-800 transition-colors duration-300">service client</NuxtLink></li>
+            <li><NuxtLink to="/footerpage/privacy-policy" class="text-white hover:text-red-800 transition-colors duration-300">Politique de Confidentialité</NuxtLink></li>
+            <li><NuxtLink to="/footerpage/terms-of-service" class="text-white hover:text-red-800 transition-colors duration-300">Conditions d'Utilisation</NuxtLink></li>
           </ul>
         </div>
 
-        <div class="col-span-1 md:col-span-1">
+        <div class="  col-span-1 md:col-span-1">
           <h3 class="text-lg font-semibold text-gray-900 font-barlow mb-4">Nous Contacter</h3>
           <div class="flex space-x-4 mt-4">
-            <a href="#" class="text-white hover:text-primary-500 transition-colors duration-300" aria-label="Facebook">
+            <a href="#" class="text-white hover:text-red-800 transition-colors duration-300" aria-label="Facebook">
               <i class="fab fa-facebook-f text-xl"></i> </a>
-            <a href="#" class="text-white hover:text-primary-500 transition-colors duration-300" aria-label="Twitter">
+            <a href="#" class="text-white hover:text-red-800 transition-colors duration-300" aria-label="Twitter">
               <i class="fab fa-twitter text-xl"></i>
             </a>
-            <a href="#" class="text-white hover:text-primary-500 transition-colors duration-300" aria-label="Instagram">
+            <a href="#" class="text-white hover:text-red-800 transition-colors duration-300" aria-label="Instagram">
               <i class="fab fa-instagram text-xl"></i>
             </a>
-            <a href="#" class="text-white hover:text-primary-500 transition-colors duration-300" aria-label="LinkedIn">
+            <a href="#" class="text-white hover:text-red-800 transition-colors duration-300" aria-label="LinkedIn">
               <i class="fab fa-linkedin-in text-xl"></i>
             </a>
+          </div>
+          <div>
+            <p class="text-gray-900 font-barlow">NEWLETTER</p>
+            <form class="flex flex-col mt-2 gap-1 w-full">
+              <input type="email" placeholder="Votre email" class="w-full h-12 p-3 rounded bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-primary-500" />
+              <button type="submit" class="mt-2 w-full bg-primary-500 bg-red-800 text-white py-2 rounded hover:bg-blue-400 transition-colors duration-300">S'abonner</button>
+            </form>
           </div>
         </div>
       </div>
@@ -65,6 +72,8 @@
 </template>
 
 <script setup>
+
+
 // Pas de logique spécifique ici pour un footer simple
 </script>
 
