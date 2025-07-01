@@ -26,27 +26,28 @@
 
 <script setup>
 import { onMounted } from 'vue';
-import { useRoute } from 'vue-router'; // useRouter n'est plus nécessaire ici si la redirection est dans le store
+import { useRoute } from 'vue-router';
 import { useAuthStore } from '@/stores/auth';
 
 const route = useRoute();
 const authStore = useAuthStore();
 
 onMounted(async () => {
-  const jwt = route.query.jwt; // Récupère le JWT du paramètre d'URL
+  const jwt = route.query.jwt;
 
-  authStore.clearMessages(); // Nettoie les messages au montage
+  authStore.clearMessages(); // Cette ligne est correcte avec le store mis à jour
 
   if (jwt) {
-    // La fonction handleConfirmationJwt du store gère maintenant l'appel API,
-    // la mise à jour de l'état, les messages et la redirection.
     await authStore.handleConfirmationJwt(jwt);
   } else {
-    // Si pas de JWT dans l'URL, c'est une erreur
     authStore.setError("Lien de confirmation invalide ou manquant.");
-    // Rediriger vers la connexion après un court délai
     setTimeout(() => {
-      useRouter().push('/login'); // Utilisation de useRouter directement si pas importé avant
+      // Assurez-vous d'importer useRouter si vous l'utilisez ici
+      // import { useRouter } from 'vue-router';
+      // const router = useRouter();
+      // router.push('/login');
+      // Ou directement comme ci-dessous si le router est bien configuré globalement
+      useRouter().push('/login');
     }, 3000);
   }
 });
