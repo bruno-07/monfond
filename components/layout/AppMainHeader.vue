@@ -9,7 +9,7 @@
   >
     <div class="max-w-7xl mx-auto flex justify-between items-center h-16">
       <NuxtLink to="/" class="flex items-center space-x-2 text-2xl font-bold text-gray-800 hover:text-primary transition-colors duration-200">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-red-800" fill="currentColor" viewBox="0 0 24 24">
           <path d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.309L18.818 7 12 9.691 5.182 7 12 4.309zM4 9l8 4 8-4v6l-8 4-8-4V9z"/>
         </svg>
         <span class="font-barlow">MonShop</span>
@@ -58,13 +58,13 @@
 
           <ul class="absolute right-0 mt-2 w-48 bg-white shadow-lg rounded-md overflow-hidden opacity-0 group-hover:opacity-100 group-hover:visible translate-y-2 group-hover:translate-y-0 transition-all duration-300 ease-out invisible z-10">
             <li v-if="!authStore.isAuthenticated">
-              <NuxtLink to="/login" class="flex gap-1  px-4 py-2 text-gray-800 hover:bg-gray-100 hover:text-primary text-sm" @click="closeMobileMenu">
+              <NuxtLink to="/auth/login" class="flex gap-1  px-4 py-2 text-gray-800 hover:bg-gray-100 hover:text-primary text-sm" @click="closeMobileMenu">
                 <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clipboard-paste-icon lucide-clipboard-paste "><path d="M11 14h10"/><path d="M16 4h2a2 2 0 0 1 2 2v1.344"/><path d="m17 18 4-4-4-4"/><path d="M8 4H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 1.793-1.113"/><rect x="8" y="2" width="8" height="4" rx="1"/></svg>
                 Se connecter
               </NuxtLink>
             </li>
             <li v-if="!authStore.isAuthenticated">
-              <NuxtLink to="/register" class="flex gap-1 px-4 py-2 text-gray-800 hover:bg-gray-100 hover:text-primary text-sm" @click="closeMobileMenu">
+              <NuxtLink to="/auth/register" class="flex gap-1 px-4 py-2 text-gray-800 hover:bg-gray-100 hover:text-primary text-sm" @click="closeMobileMenu">
                 <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clipboard-pen-line-icon lucide-clipboard-pen-line"><rect width="8" height="4" x="8" y="2" rx="1"/><path d="M8 4H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-.5"/><path d="M16 4h2a2 2 0 0 1 1.73 1"/><path d="M8 18h1"/><path d="M21.378 12.626a1 1 0 0 0-3.004-3.004l-4.01 4.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"/></svg>
                 Créer un compte
               </NuxtLink>

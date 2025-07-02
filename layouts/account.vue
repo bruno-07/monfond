@@ -2,7 +2,7 @@
   <div class="min-h-screen bg-gray-100 flex flex-col">
     <header class="bg-white shadow p-4 flex justify-between items-center z-10">
        <NuxtLink to="/" class="flex items-center space-x-2 text-2xl font-bold text-gray-800 hover:text-primary transition-colors duration-200">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-red-800" fill="currentColor" viewBox="0 0 24 24">
           <path d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.309L18.818 7 12 9.691 5.182 7 12 4.309zM4 9l8 4 8-4v6l-8 4-8-4V9z"/>
         </svg>
         <span class="font-barlow">MonShop</span>
@@ -29,14 +29,15 @@
       </main>
     </div>
 
-    <footer class="bg-gray-800 text-white p-6 text-center">
+    <footer class="bg-blue-500  text-white p-6 text-center">
       <div class="container mx-auto">
-        <p>&copy; {{ new Date().getFullYear() }} Votre Application. Tous droits réservés.</p>
-        <div class="mt-4 flex justify-center space-x-6">
-          <NuxtLink to="/legal/mentions-legales" class="text-gray-300 hover:text-white">Mentions Légales</NuxtLink>
-          <NuxtLink to="/legal/politique-confidentialite" class="text-gray-300 hover:text-white">Politique de Confidentialité</NuxtLink>
+         <div class="mt-4 flex justify-center space-x-6">
+          <NuxtLink to="/legal/mentions-legales" class="text-gray-300 hover:text-red-800">Mentions Légales</NuxtLink>
+          <NuxtLink to="/legal/politique-confidentialite" class="text-gray-300 hover:text-red-800">Politique de Confidentialité</NuxtLink>
           <NuxtLink to="/legal/cgv" class="text-gray-300 hover:text-white">CGV</NuxtLink>
           </div>
+        <p>&copy; {{ new Date().getFullYear() }} Votre Application. Tous droits réservés.</p>
+       
       </div>
     </footer>
   </div>

@@ -18,12 +18,22 @@
         </div>
       </div>
     </div>
-
-    </div>
+  </div>
 </template>
 
 <script setup>
+
 import { useAuthStore } from '~/stores/auth';
 
 const authStore = useAuthStore();
+
+// IMPORTANT : Définir le layout et le middleware pour cette page
+definePageMeta({
+  layout: 'account', // Utilise le layout account.vue que vous avez créé
+  middleware: ['auth'] // Protège cette page avec le middleware d'authentification
+});
 </script>
+
+<style scoped>
+/* Styles spécifiques si besoin */
+</style>

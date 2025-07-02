@@ -103,6 +103,12 @@
 </template>
 
 <script setup>
+
+definePageMeta({
+  layout: 'account', // Indique d'utiliser layouts/account.vue
+  middleware: ['auth'] // Pour protéger la page (si applicable)
+});
+
 import { ref, onMounted } from 'vue';
 // import { useAuthStore } from '~/stores/auth'; // Si vous avez besoin du store auth ici
 

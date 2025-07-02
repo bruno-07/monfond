@@ -6,7 +6,7 @@
         <div class="col-span-2 md:col-span-1">
           <div class="flex items-center mb-4">
             <NuxtLink to="/" class="flex items-center space-x-2 text-2xl font-bold text-gray-800 hover:text-primary transition-colors duration-200">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-red-800" fill="currentColor" viewBox="0 0 24 24">
           <path d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.309L18.818 7 12 9.691 5.182 7 12 4.309zM4 9l8 4 8-4v6l-8 4-8-4V9z"/>
         </svg>
         <span class="font-barlow">MonShop</span>
@@ -39,9 +39,9 @@
           </ul>
         </div>
 
-        <div class="  col-span-1 md:col-span-1">
+        <div class="  col-span-1 md:col-span-1 ">
           <h3 class="text-lg font-semibold text-gray-900 font-barlow mb-4">Nous Contacter</h3>
-          <div class="flex space-x-4 mt-4">
+          <div class="flex space-x-4 mt-4 ">
             <a href="#" class="text-white hover:text-red-800 transition-colors duration-300" aria-label="Facebook">
               <i class="fab fa-facebook-f text-xl"></i> </a>
             <a href="#" class="text-white hover:text-red-800 transition-colors duration-300" aria-label="Twitter">
@@ -54,11 +54,11 @@
               <i class="fab fa-linkedin-in text-xl"></i>
             </a>
           </div>
-          <div>
+          <div >
             <p class="text-gray-900 font-barlow">NEWLETTER</p>
-            <form class="flex flex-col mt-2 gap-1 w-full">
-              <input type="email" placeholder="Votre email" class="w-full h-12 p-3 rounded bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-primary-500" />
-              <button type="submit" class="mt-2 w-full bg-primary-500 bg-red-800 text-white py-2 rounded hover:bg-blue-400 transition-colors duration-300">S'abonner</button>
+            <form class="flex flex-row items-center mt-2 gap-2 w-full md:col-span-2">
+              <input type="email" placeholder="Votre email" class="flex-1 h-12 p-3 rounded bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-primary-500" />
+              <button type="submit" class="bg-primary-500 bg-red-800 text-white py-2 px-2 rounded hover:bg-blue-400 transition-colors duration-300">S'abonner</button>
             </form>
           </div>
         </div>

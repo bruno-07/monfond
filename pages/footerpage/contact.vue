@@ -29,10 +29,10 @@
             <textarea id="message" rows="4" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary-500 focus:border-primary-500"></textarea>
           </div>
           <div class="flex gap-1">
-              <button type="submit" class="mt-2 w-20 bg-primary-500 bg-red-800 text-white py-2 rounded hover:bg-blue-400 transition-colors duration-300">
+              <button type="submit" class="mt-2 w-20  bg-red-800 text-white py-2 rounded hover:bg-blue-400 transition-colors duration-300">
                <a href=""> Envoyer</a> 
             </button>
-            <button type="submit" class="mt-2 w-20 bg-primary-500 bg-red-800 text-white py-2 rounded hover:bg-blue-400 transition-colors duration-300"><NuxtLink  NuxtLink to="/">
+            <button type="submit" class="mt-2 w-20  bg-red-800 text-white py-2 rounded hover:bg-blue-400 transition-colors duration-300"><NuxtLink  NuxtLink to="/">
                 boutique
             </NuxtLink></button>
           </div>
