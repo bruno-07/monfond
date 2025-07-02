@@ -126,7 +126,7 @@ export const useAuthStore = defineStore('auth', () => {
     user.value = null;
     isAuthenticated.value = false;
     clearMessages();
-    router.push('/login');
+    router.push('/auth/login');
     return true;
   };
 

@@ -26,8 +26,7 @@ export default defineNuxtConfig({
       strapiBaseUrl: process.env.NUXT_PUBLIC_STRAPI_BASE_URL || 'https://mighty-kindness-3674f7b18e.strapiapp.com/',
     }
   },
-  // Si vous avez configuré pinia-plugin-persistedstate, assurez-vous que le plugin est aussi là
   plugins: [
-     '~/plugins/pinia-persistedstate.client.ts', // Si vous l'avez créé
+     '~/plugins/pinia-persistedstate.client.ts', 
   ],
 })

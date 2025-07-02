@@ -53,12 +53,20 @@ const formatCurrency = (value) => {
   return new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'XAF' }).format(value);
 };
 
-const getProductImageUrl = (image) => {
-    const API_BASE_URL = 'https://mighty-kindness-3674f7b18e.strapiapp.com';
-    if (image && image.data && image.data.attributes) {
-        return `${API_BASE_URL}${image.data.attributes.url}`;
+const getProductImageUrl = (imageObject) => {
+  if (imageObject && imageObject.url) {
+    // Si l'URL de l'image est déjà absolue, utilisez-la directement.
+    // C'est le cas avec Strapi Cloud.
+    if (imageObject.url.startsWith('http://') || imageObject.url.startsWith('https://')) {
+      return imageObject.url;
     }
-    return '';
+    // Sinon (si c'est une URL relative, ce qui est moins courant avec Strapi Cloud mais possible),
+    // alors préfixez avec la baseUrl.
+    const config = useRuntimeConfig();
+    return `${config.public.strapiBaseUrl}${imageObject.url}`;
+  }
+  // Fallback si pas d'image
+  return '/no-image.png'; // Assurez-vous d'avoir une image '/public/no-image.png'
 };
 </script>
 

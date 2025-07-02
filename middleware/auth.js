@@ -8,7 +8,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
   if (!authStore.isAuthenticated && to.path.startsWith('/account')) {
     // Redirige vers la page de connexion
     // Et stocke la page d'origine pour y revenir après connexion
-    return navigateTo('/login');
+    return navigateTo('/auth/login');
   }
 
   // Si l'utilisateur est authentifié, on ne fait rien et on le laisse passer

@@ -25,7 +25,7 @@ export const useProductStore = defineStore('product', () => {
     clearMessages();
     try {
       // populate=* pour inclure les images ou autres relations si elles sont configurées
-      const response = await fetch(`${API_BASE_URL}/api/products?populate=*`);
+      const response = await fetch(`${API_BASE_URL}/api/produits?populate=*`);
       const responseData = await response.json();
 
       if (!response.ok) {
@@ -57,7 +57,7 @@ export const useProductStore = defineStore('product', () => {
     try {
       // Utilisez un filtre sur le slug pour récupérer un produit spécifique
       // Le `populate=*` est important pour avoir l'image du produit
-      const response = await fetch(`${API_BASE_URL}/api/products?filters[slug][$eq]=${slug}&populate=*`);
+      const response = await fetch(`${API_BASE_URL}/api/produits?filters[slug][$eq]=${slug}&populate=*`);
       const responseData = await response.json();
 
       if (!response.ok) {

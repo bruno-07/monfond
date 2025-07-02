@@ -11,12 +11,10 @@ export const useProductsStore = defineStore('products', () => {
   const selectedSubcategory = ref<number | null>(null)
 
   const filteredProducts = computed(() => {
-    // Logique de filtrage basée sur selectedCategory/selectedSubcategory
     let filtered = products.value;
     if (selectedCategory.value) {
       filtered = filtered.filter(p => p.category?.id === selectedCategory.value);
     }
-    // Ajouter la logique pour selectedSubcategory ici si applicable
     return filtered;
   })
 
@@ -27,21 +25,17 @@ export const useProductsStore = defineStore('products', () => {
       const config = useRuntimeConfig()
       const baseUrl = config.public.strapiBaseUrl
 
-      // Exemple de fetch pour les produits avec population
-      // Assurez-vous que Strapi est configuré pour renvoyer les images et catégories
-      const productsResponse = await $fetch(`${baseUrl}/api/products?populate=image,category,brand`)
+      // CORRECTION : Utilisez 'mainImage' et assurez-vous que baseUrl est sans slash final
+      const productsResponse = await $fetch(`${baseUrl}/api/produits?populate=mainImage,category,brand`)
       products.value = (productsResponse as any).data.map((item: any) => ({
         id: item.id,
         ...item.attributes,
-        // Adapter la structure si l'image est un tableau ou un objet simple
-        image: item.attributes.image?.data ? item.attributes.image.data[0]?.attributes : null,
+        // CORRECTION : Mappage simplifié de l'image
+        mainImage: item.attributes.mainImage || null,
         category: item.attributes.category?.data?.attributes ? { id: item.attributes.category.data.id, ...item.attributes.category.data.attributes } : null,
-        // ansienPrix doit être prixReduit ou similaire, si c'est le cas dans Strapi
-        anscienPrix: item.attributes.prixReduit || null, // Adapter le nom de l'attribut
+        anscienPrix: item.attributes.prixReduit || null,
       }))
 
-      // Exemple de fetch pour les catégories avec population de sous-catégories
-      // Assurez-vous que votre modèle Category dans Strapi a une relation 'subCategories'
       const categoriesResponse = await $fetch(`${baseUrl}/api/categories?populate=subCategories.parentCategory`)
       categories.value = (categoriesResponse as any).data.map((item: any) => ({
         id: item.id,
@@ -62,7 +56,7 @@ export const useProductsStore = defineStore('products', () => {
 
   const setSelectedCategory = (categoryId: number | null) => {
     selectedCategory.value = categoryId
-    selectedSubcategory.value = null // Réinitialiser la sous-catégorie lors du changement de catégorie principale
+    selectedSubcategory.value = null
   }
 
   const setSelectedSubcategory = (subcategoryId: number | null) => {
