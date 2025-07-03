@@ -10,7 +10,7 @@
       <p v-else-if="authStore.error" class="mt-2 text-sm text-red-600">
         {{ authStore.error }}
         <br>
-        <NuxtLink to="/login" class="font-medium text-primary-500 hover:text-primary-900">
+        <NuxtLink to="/auth/login" class="font-medium text-primary-500 hover:text-primary-900">
           Retour à la page de connexion
         </NuxtLink>
       </p>
@@ -47,7 +47,7 @@ onMounted(async () => {
       // const router = useRouter();
       // router.push('/login');
       // Ou directement comme ci-dessous si le router est bien configuré globalement
-      useRouter().push('/login');
+      useRouter().push('/auth/login');
     }, 3000);
   }
 });

@@ -11,7 +11,7 @@
       <p class="mt-4 text-sm text-gray-500">
         Si vous ne le trouvez pas, vérifiez votre dossier de spam/courrier indésirable.
       </p>
-      <NuxtLink to="/login" class="mt-6 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-primary-500 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+      <NuxtLink to="/auth/login" class="mt-6 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-primary-500 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
         Retour à la connexion
       </NuxtLink>
     </div>

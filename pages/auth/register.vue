@@ -7,7 +7,7 @@
         </h2>
         <p class="mt-2 text-center text-sm text-gray-600">
           Ou
-          <NuxtLink to="/login" class="font-medium text-primary-500 hover:text-primary-900">
+          <NuxtLink to="/auth/login" class="font-medium text-primary-500 hover:text-primary-900">
             connectez-vous à votre compte existant
           </NuxtLink>
         </p>
@@ -121,7 +121,7 @@ const handleRegister = async () => {
 
   if (result && result.success) {
     // Redirige vers la page d'information "vérifiez votre e-mail"
-    router.push('/check-your-email');
+    router.push('/auth/check-your-email');
   }
   // Les erreurs sont gérées et affichées par authStore.error
 };

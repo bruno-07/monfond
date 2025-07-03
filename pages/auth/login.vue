@@ -7,7 +7,7 @@
         </h2>
         <p class="mt-2 text-center text-sm text-gray-600">
           Ou
-          <NuxtLink to="/register" class="font-medium text-primary-500 hover:text-primary-900">
+          <NuxtLink to="/auth/register" class="font-medium text-primary-500 hover:text-primary-900">
             créez un nouveau compte
           </NuxtLink>
         </p>
@@ -62,7 +62,7 @@
           </div>
 
           <div class="text-sm">
-            <NuxtLink to="/forgot-password" class="font-medium text-primary-500 hover:text-primary-900">
+            <NuxtLink to="/auth/forgot-password" class="font-medium text-primary-500 hover:text-primary-900">
               Mot de passe oublié ?
             </NuxtLink>
           </div>
