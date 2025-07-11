@@ -21,8 +21,8 @@
           <h3 class="text-lg  text-gray-900 font-barlow mb-4">Navigation</h3>
           <ul class="space-y-2">
             <li><NuxtLink to="/" class="text-white hover:text-red-800 transition-colors duration-300">Offres du jour</NuxtLink></li>
-            <li><NuxtLink to="/products" class="text-white hover:text-red-800 transition-colors duration-300">Produits tendance</NuxtLink></li>
-            <li><NuxtLink to="/categories" class="text-white hover:text-red-800 transition-colors duration-300">Catégories</NuxtLink></li>
+            <li><NuxtLink to="/" class="text-white hover:text-red-800 transition-colors duration-300">Produits tendance</NuxtLink></li>
+            <li><NuxtLink to="/" class="text-white hover:text-red-800 transition-colors duration-300">Catégories</NuxtLink></li>
             <li><NuxtLink to="/footerpage/about" class="text-white hover:text-red-800 transition-colors duration-300">À Propos</NuxtLink></li>
             <li><NuxtLink to="/footerpage/contact" class="text-white hover:text-red-800 transition-colors duration-300">Contact</NuxtLink></li>
           </ul>

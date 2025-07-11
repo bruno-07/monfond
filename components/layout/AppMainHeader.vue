@@ -16,7 +16,7 @@
       </NuxtLink>
 
       <nav class="hidden lg:flex items-center space-x-8">
-         <NuxtLink to="/categories" class="flex-shrink-0 flex items-center space-x-2 px-3 py-2 hover:bg-gray-700 rounded-md transition-colors duration-200 text-sm md:text-base">
+         <NuxtLink to="/" class="flex-shrink-0 flex items-center space-x-2 px-3 py-2 hover:bg-gray-700 rounded-md transition-colors duration-200 text-sm md:text-base">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-800" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
                 </svg>
@@ -82,7 +82,7 @@
           </ul>
         </div>
 
-        <NuxtLink to="/cart" class="relative flex items-center space-x-1 text-white hover:text-primary transition-colors duration-200 group">
+        <NuxtLink to="/" class="relative flex items-center space-x-1 text-white hover:text-primary transition-colors duration-200 group">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6  text-red-800 group-hover:scale-105 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 100-3 1.5 1.5 0 000 3z" />
           </svg>
@@ -108,7 +108,7 @@
 
     <div class="sub-nav-ba text-white py-2">
         <div class="max-w-7xl mx-auto px-6 md:px-8 lg:px-12 flex items-center space-x-6 overflow-x-auto whitespace-nowrap scrollbar-hide">
-            <NuxtLink to="/top-ventes" class="flex-shrink-0 flex items-center space-x-2 px-3 py-2 hover:bg-gray-700 rounded-md transition-colors duration-200 text-sm md:text-base">
+            <NuxtLink to="/" class="flex-shrink-0 flex items-center space-x-2 px-3 py-2 hover:bg-gray-700 rounded-md transition-colors duration-200 text-sm md:text-base">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-800" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-4 2.5-4h1.037z" />
                     <path stroke-linecap="round" stroke-linejoin="round" d="M14 6l-4.5 4.5M14 6l4.5 4.5M14 6c1.5-1.5 3-3 4.5-3" />
@@ -116,28 +116,28 @@
                 <span>Top Ventes</span>
             </NuxtLink>
 
-            <NuxtLink to="/nouveautes" class="flex-shrink-0 flex items-center space-x-2 px-3 py-2 hover:bg-gray-700 rounded-md transition-colors duration-200 text-sm md:text-base">
+            <NuxtLink to="/" class="flex-shrink-0 flex items-center space-x-2 px-3 py-2 hover:bg-gray-700 rounded-md transition-colors duration-200 text-sm md:text-base">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-800 " fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
                 <span>Nouveautés</span>
             </NuxtLink>
 
-            <NuxtLink to="/promotions" class="flex-shrink-0 flex items-center space-x-2 px-3 py-2 hover:bg-gray-700 rounded-md transition-colors duration-300 text-sm md:text-base">
+            <NuxtLink to="/" class="flex-shrink-0 flex items-center space-x-2 px-3 py-2 hover:bg-gray-700 rounded-md transition-colors duration-300 text-sm md:text-base">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-800" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
                 </svg>
                 <span>Promotions</span>
             </NuxtLink>
 
-            <NuxtLink to="/toutes-categories" class="flex-shrink-0 flex items-center space-x-2 px-3 py-2 hover:bg-gray-700 rounded-md transition-colors duration-200 text-sm md:text-base">
+            <NuxtLink to="/" class="flex-shrink-0 flex items-center space-x-2 px-3 py-2 hover:bg-gray-700 rounded-md transition-colors duration-200 text-sm md:text-base">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-800" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
                 </svg>
                 <span>Toutes Catégories</span>
             </NuxtLink>
 
-            <NuxtLink to="/support-client" class="flex-shrink-0 flex items-center space-x-2 px-3 py-2 hover:bg-gray-700 rounded-md transition-colors duration-200 text-sm md:text-base">
+            <NuxtLink to="/" class="flex-shrink-0 flex items-center space-x-2 px-3 py-2 hover:bg-gray-700 rounded-md transition-colors duration-200 text-sm md:text-base">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-800 " fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9.228a4.5 4.5 0 117.5 0M15 13H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
@@ -160,27 +160,27 @@
                 </NuxtLink>
               </li>
               <li>
-                  <NuxtLink to="/top-ventes" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-primary font-semibold text-lg transition-colors duration-200" @click="closeMobileMenu">
+                  <NuxtLink to="/" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-primary font-semibold text-lg transition-colors duration-200" @click="closeMobileMenu">
                     Top Ventes
                   </NuxtLink>
               </li>
               <li>
-                  <NuxtLink to="/nouveautes" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-primary font-semibold text-lg transition-colors duration-200" @click="closeMobileMenu">
+                  <NuxtLink to="/" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-primary font-semibold text-lg transition-colors duration-200" @click="closeMobileMenu">
                     Nouveautés
                   </NuxtLink>
               </li>
               <li>
-                  <NuxtLink to="/promotions" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-primary font-semibold text-lg transition-colors duration-200" @click="closeMobileMenu">
+                  <NuxtLink to="/" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-primary font-semibold text-lg transition-colors duration-200" @click="closeMobileMenu">
                     Promotions
                   </NuxtLink>
               </li>
               <li>
-                  <NuxtLink to="/toutes-categories" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-primary font-semibold text-lg transition-colors duration-200" @click="closeMobileMenu">
+                  <NuxtLink to="/" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-primary font-semibold text-lg transition-colors duration-200" @click="closeMobileMenu">
                     Toutes Catégories
                   </NuxtLink>
               </li>
               <li>
-                  <NuxtLink to="/support-client" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-primary font-semibold text-lg transition-colors duration-200" @click="closeMobileMenu">
+                  <NuxtLink to="/" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-primary font-semibold text-lg transition-colors duration-200" @click="closeMobileMenu">
                     Support Client
                   </NuxtLink>
               </li>
@@ -189,12 +189,12 @@
             <h3 class="text-xl font-bold text-gray-900 mb-3 border-b pb-2 pt-4">Mon Compte</h3>
             <ul class="flex flex-col space-y-2">
               <li v-if="!authStore.isAuthenticated">
-                <NuxtLink to="/login" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-primary font-semibold text-lg transition-colors duration-200" @click="closeMobileMenu">
+                <NuxtLink to="/auth/login" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-primary font-semibold text-lg transition-colors duration-200" @click="closeMobileMenu">
                   Se connecter
                 </NuxtLink>
               </li>
               <li v-if="!authStore.isAuthenticated">
-                <NuxtLink to="/register" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-primary font-semibold text-lg transition-colors duration-200" @click="closeMobileMenu">
+                <NuxtLink to="/auth/register" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-primary font-semibold text-lg transition-colors duration-200" @click="closeMobileMenu">
                   Créer un compte
                 </NuxtLink>
               </li>
