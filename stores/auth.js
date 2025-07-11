@@ -174,7 +174,7 @@ export const useAuthStore = defineStore('auth', () => {
       user.value = response.user;
       isAuthenticated.value = true;
       setSuccess("Votre mot de passe a été réinitialisé avec succès ! Redirection vers la page de connexion...");
-      router.push('/login');
+      router.push('/auth/login');
       return true;
     }
     return false;

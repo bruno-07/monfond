@@ -23,7 +23,7 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      strapiBaseUrl: process.env.NUXT_PUBLIC_STRAPI_BASE_URL || 'https://mighty-kindness-3674f7b18e.strapiapp.com/',
+      strapiBaseUrl: process.env.NUXT_PUBLIC_STRAPI_BASE_URL || 'https://mighty-kindness-3674f7b18e.strapiapp.com',
     }
   },
   plugins: [
